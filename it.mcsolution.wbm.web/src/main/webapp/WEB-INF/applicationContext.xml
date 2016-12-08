@@ -1,0 +1,37 @@
+<?xml  version="1.0"  encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdi="http://www.jboss.org/schema/seam/spring" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+				         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+		<context:component-scan base-package="it.mcsolution.wbm" />
+ 	
+
+		<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="ignoreResourceNotFound" value="false" />
+		<property name="locations">
+			<list>
+				<value>classpath:wbm-configuration.properties</value>
+			</list>
+		</property>
+		</bean>
+	
+
+
+	
+	<bean id="configPropConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="properties" ref="configProperties" />
+	</bean>
+
+  <bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!-- maxUploadSize=10MB -->
+	<property name="maxUploadSize" value="10240000"/>
+	</bean>
+
+
+</beans>

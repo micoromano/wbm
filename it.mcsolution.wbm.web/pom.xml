@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>it.mcsolution.wbm.web</groupId>
+  <artifactId>it.mcsolution.wbm.web</artifactId>
+  <name>wbm</name>
+  <version>1.0.0</version>
+  <url>http://www.springframework.org/osgi</url>
+  <packaging>war</packaging>
+  
+  <properties>
+  	<spring.maven.artifact.version>4.0.0.RELEASE</spring.maven.artifact.version>
+   	<maven-jar-plugin.version>2.3.1</maven-jar-plugin.version>
+		<maven-compiler-plugin.version>1.6</maven-compiler-plugin.version>
+		<junit.version>4.11</junit.version>
+		<spring.version>4.0.0.RELEASE</spring.version>
+		<commons-logging.version>1.1.1</commons-logging.version>
+		<slf4j.version>1.7.12</slf4j.version>
+		<cglib.version>2.2.2</cglib.version>
+		<junit.version>4.11</junit.version>
+		<aspectj.version>1.7.2</aspectj.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<web.xml>src/main/webapp/WEB-INF/web.xml</web.xml>
+			<spring-data-jpa.version>1.8.2.RELEASE</spring-data-jpa.version>
+		<hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
+		<hibernate.version>5.0.0.Final</hibernate.version>
+	  </properties>
+  
+  <dependencies>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.maven.artifact.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.maven.artifact.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.maven.artifact.version}</version>
+    </dependency>
+    <dependency>
+     <groupId>javax.servlet</groupId>
+     <artifactId>jstl</artifactId>
+     <version>1.2</version>
+	</dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- excel -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.12</version>
+		</dependency>
+		<!-- excel 2007 over-->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.12</version>
+		</dependency>
+		<!-- upload file -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.google.api-client</groupId>
+    		<artifactId>google-api-client</artifactId>
+    		<version>1.22.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.google.oauth-client</groupId>
+    		<artifactId>google-oauth-client</artifactId>
+    		<version>1.22.0</version>
+		</dependency>
+		<dependency>
+   			<groupId>com.google.apis</groupId>
+    		<artifactId>google-api-services-sheets</artifactId>
+    		<version>v4-rev38-1.22.0</version>
+		</dependency>
+		<dependency>
+   		 <groupId>com.google.oauth-client</groupId>
+   		 <artifactId>google-oauth-client-java6</artifactId>
+   		 <version>1.22.0</version>
+		</dependency>
+		<dependency>
+    	<groupId>com.google.oauth-client</groupId>
+    	<artifactId>google-oauth-client-jetty</artifactId>
+    	<version>1.22.0</version>
+		</dependency>
+		<dependency>
+    	<groupId>com.google.oauth-client</groupId>
+   		<artifactId>google-oauth-client</artifactId>
+    	<version>1.22.0</version>
+</dependency>
+	<!-- test scoped dependencies -->
+      <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.maven.artifact.version}</version>
+      <scope>test</scope>
+    </dependency>
+     </dependencies>
+
+  <!-- for packaging as an OSGi bundle, we use the maven-bundle-plugin -->
+  
+  <!-- see http://felix.apache.org/site/maven-bundle-plugin-bnd.html for more info -->
+  <build>
+		<finalName>wbm</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/webapp/resources/</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>copy-warfile</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<copy file="${project.build.directory}/${project.build.finalName}.war" todir="${basedir}/target-environments/${env}/deploy" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.16</version>
+
+				<configuration>
+					<skipTests>true</skipTests>
+					<enableAssertions>false</enableAssertions>
+					<excludes>
+						<exclude>**/util/**</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<webXml>${web.xml}</webXml>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+					<archive>
+						</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<server>tomcat</server>
+					<url>${tomcat.host}/manager/text</url>
+					<path>/${project.build.finalName}</path>
+					<update>true</update>
+				</configuration>
+			</plugin>
+  </plugins>
+  </build>
+  <!-- ================================================ -->
+  <!--            Repository Configuration              -->
+  <!-- ================================================ -->
+
+  <!-- <repositories>
+    <repository>
+			<id>central</id>
+			<name>libs-release</name>
+			<url>http://gr.almaviva.it:8081/artifactory</url>
+		</repository>
+    </repositories> -->
+
+
+</project>
