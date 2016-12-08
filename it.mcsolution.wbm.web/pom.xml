@@ -207,13 +207,6 @@
   <!--            Repository Configuration              -->
   <!-- ================================================ -->
 
-  <!-- <repositories>
-    <repository>
-			<id>central</id>
-			<name>libs-release</name>
-			<url>http://gr.almaviva.it:8081/artifactory</url>
-		</repository>
-    </repositories> -->
-
+ 
 
 </project>

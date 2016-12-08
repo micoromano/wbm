@@ -40,23 +40,25 @@
 <body>
 
 <script type="text/javascript">
-$( document ).ready(function() {
+/*$( document ).ready(function() {
 	
 	 setInterval(function() {
          window.location.reload();
-       }, 300000); 
-setTimeout(function() {
-   $('html, body').animate({scrollTop:0}, 20000); 
-},10000);
-setInterval(function(){
-     // 4000 - it will take 4 secound in total from the top of the page to the bottom
-$("html, body").animate({ scrollTop: $(document).height() }, 20000);
-setTimeout(function() {
-   $('html, body').animate({scrollTop:0}, 20000); 
-},10000);
-    
-},10000);
+       }, 120000); 
+	 
+	 
+	 
+	 
+$("body").animate({
+	scrollTop: $("body").height()
+}, 60000, function(){
+	$('body').animate({
+	   scrollTop:0
+	}, 60000); 
 });
+    
+
+});*/
 </script>
  <div class="container itemContainer" style="width: 100%;height: auto;text-align: center;background-color: black;">
         <div class="row">
@@ -65,15 +67,22 @@ setTimeout(function() {
  				<div class="row">
  				  <c:forEach var="list" items="${user}" varStatus="loop">
                 <div class="col-4k-6 col-md-6 singleItem">
-                    <div class="panel panel-primary" style="background-color: #A52A2A">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-lg-1 itemID">
-                                    <i class="fa-5x">${loop.index +1}</i>
+                                    <i>${loop.index +1}</i>
                                 </div>
-                                <div class="col-lg-11 itemDesc">
-                                    <div class="huge" style="text-align: justify;">${list.beer} - ${list.type} - ${list.note}</div>
-                                    <div class="huge" style="text-align: justify;">${list.short_Description} - ${list.nationality} - ${list.grade}</div>
+                                <div class="col-lg-5 itemDesc thirdIcon">
+                                    <div class="bigDesc"><span class="beerDesc">${list.beer}</span><span class="typeDesc">${list.type}</span></div>
+                                    <div class="smallDesc"><span class="noteDesc">${list.note}</span><span class="nationDesc">${list.nationality}</span><span class="gradeDesc">${list.grade}</span></div>
+                                    <div class="smallDesc"><span class="shortDesc">${list.short_Description}</span></div>
+                                </div>
+                                <div class="col-lg-2 itemIcon">
+                                    <span>icona</span>
+                                </div>
+                                <div class="col-lg-2 itemIcon">
+                                    <span>icona</span>
                                 </div>
                             </div>
                         </div>

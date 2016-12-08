@@ -47,7 +47,7 @@
 		<level value="INFO" />
 	</logger>
 
-	<logger name="it.almaviva.rules">
+	<logger name="it.mcsolutions.wbm">
 		<level value="DEBUG" />
 		<appender-ref ref="WBM-CORE" />
 	</logger>
@@ -57,7 +57,7 @@
 		<appender-ref ref="WBM-CORE" />
 	</logger>
 
-	<logger name="it.almaviva.hub.fiscale" additivity="false">
+	<logger name="it.mcsolutions.wbm" additivity="false">
 		<level value="DEBUG" />
 		<appender-ref ref="WBM" />
 		<appender-ref ref="CONSOLE" />
