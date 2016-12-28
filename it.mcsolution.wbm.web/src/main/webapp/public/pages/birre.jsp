@@ -40,7 +40,7 @@
 <body>
 
 <script type="text/javascript">
-/*$( document ).ready(function() {
+$( document ).ready(function() {
 	
 	 setInterval(function() {
          window.location.reload();
@@ -58,42 +58,49 @@ $("body").animate({
 });
     
 
-});*/
+});
 </script>
- <div class="container itemContainer" style="width: 100%;height: auto;text-align: center;background-color: black;">
-        <div class="row">
-               <div class="panel panel-default">
-                    <div class="panel-body">
- 				<div class="row">
- 				  <c:forEach var="list" items="${user}" varStatus="loop">
-                <div class="col-4k-6 col-md-6 singleItem">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-lg-1 itemID">
-                                    <i>${loop.index +1}</i>
-                                </div>
-                                <div class="col-lg-5 itemDesc thirdIcon">
-                                    <div class="bigDesc"><span class="beerDesc">${list.beer}</span><span class="typeDesc">${list.type}</span></div>
-                                    <div class="smallDesc"><span class="noteDesc">${list.note}</span><span class="nationDesc">${list.nationality}</span><span class="gradeDesc">${list.grade}</span></div>
-                                    <div class="smallDesc"><span class="shortDesc">${list.short_Description}</span></div>
-                                </div>
-                                <div class="col-lg-2 itemIcon">
-                                    <span>icona</span>
-                                </div>
-                                <div class="col-lg-2 itemIcon">
-                                    <span>icona</span>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                </c:forEach>
-                </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<div class="container itemContainer" style="width: 100%;height: auto;text-align: center;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<c:forEach var="list" items="${user}" varStatus="loop">
+							<div class="col-4k-6 col-md-6 singleItem">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="itemID col-lg-2 itemBubble">
+												<i>${loop.index +1}</i>
+											</div>
+											<div class="itemDesc col-lg-9">
+												<div class="firstRow">
+													<strong class="itemName">${list.beer}</strong> - <strong
+														class="itemType">${list.type}</strong> -
+												</div>
+												<div class="lastRow">
+													<span class="itemCountry">${list.nationality}</span> <strong
+														class="itemManifacturer">${list.short_Description}</strong>
+													- <span class="itemDegree">${list.grade}</span> <span
+														class="itemPrice">${list.note}</span>
+												</div>
+
+											</div>
+											<!--<div class="itemIcon col-md-2 itemBubble">
+																<i>1</i>
+																<i>1</i>
+									</div>-->
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 </body>
