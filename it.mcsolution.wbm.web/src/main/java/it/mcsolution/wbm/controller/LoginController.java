@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import it.mcsolution.wbm.dao.UserDao;
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 
 @Resource(name = "configProperties")
 private Properties configProperties;
+@Autowired
+private UserDao userData; 
 	
 	@RequestMapping(value="/doLogin", method=RequestMethod.POST)
 	public ModelAndView doLogin(@RequestParam("u") String user,@RequestParam("p") String password )
@@ -28,7 +32,7 @@ private Properties configProperties;
 	    	    mv.addObject("State", "True");
 	    	    
 	    	    
-	    	    mv = new  ModelAndView("nations", "user", true);
+	    	    mv = new  ModelAndView("moduloBirre", "user", true);
 	        }else{
 	        	mv = new ModelAndView("login", "user", false);
 	        }
@@ -64,7 +68,7 @@ private Properties configProperties;
 	
 	public boolean checkUsr(String user,String password){
 		
-		if(user.equalsIgnoreCase("pippo")&&password.equalsIgnoreCase("pippo")){
+		if(userData.getUser(user, password)!=null){
 		return true;
 		}else{
 		return false;	

@@ -17,6 +17,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,13 +30,17 @@ import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 
 import it.mcsolution.wbm.bean.BeerBean;
+import it.mcsolution.wbm.entity.MenuItemObj;
 import it.mcsolution.wbm.google.utility.GoogleSpreadsheetUtil;
+import it.mcsolution.wbm.spi.WbmMenuBean;
 @Controller
 @RequestMapping("/operation")
 public class OperationController {
 
 	@Resource(name = "configProperties")
 	private Properties configProperties;
+	@Autowired
+	private WbmMenuBean webMenuBean; 
 	
 	@RequestMapping(value = "/processExcel", method = RequestMethod.POST)
 	public ModelAndView processExcel(Model model, @RequestParam("excelfile") MultipartFile excelfile) {		
@@ -154,6 +159,7 @@ public class OperationController {
 	          }
 	        
 	    }else{ 
+	    	if(configProperties.getProperty("isexcelSheet").equalsIgnoreCase("true")){
 			File folder = new File(configProperties.getProperty("excel.folder.active"));
 			File[] listOfFiles = folder.listFiles();
 			    for (int i = 0; i < listOfFiles.length; i++) {
@@ -196,6 +202,63 @@ public class OperationController {
 			    	 continue;
 			      }
 			    }
+	    	}else{
+	    	
+	    		String menuId  = configProperties.getProperty("menuId");
+	    		List<MenuItemObj> menuItemObjList = webMenuBean.getListMenu(menuId);
+	    		
+	    		for(MenuItemObj obj:menuItemObjList){
+	    		BeerBean beer = new BeerBean();
+				// Creates an object representing a single row in excel
+			
+		    		if(obj.getBeer()!=null){
+		    			beer.setBeer(obj.getBeer());
+		    		}else{
+		    			beer.setBeer("N/D");	
+		    		}
+		    		if(obj.getType()!=null){
+		    			beer.setType(obj.getType());
+		    		}else{
+		    			beer.setType("N/D");	
+		    		}
+		    		if(obj.getNationality()!=null){
+		    			beer.setNationality(obj.getNationality());
+		    		}else{
+		    			beer.setNationality("N/D");	
+		    		}
+		    		if(obj.getShort_description()!=null){
+		    			beer.setShort_Description(obj.getShort_description());
+		    		}else{
+		    			beer.setShort_Description("N/D");	
+		    		}
+		    		if(obj.getGrade()!=null){
+		    			beer.setGrade(obj.getGrade());
+		    		}else{
+		    			beer.setGrade("N/D");	
+		    		}
+		    		if(obj.getNote()!=null){
+		    			beer.setNote(obj.getNote());
+		    		}else{
+		    			beer.setNote("N/D");	
+		    		}
+			
+				
+				
+				lstUser.add(beer);
+	    		}
+	    		//check if listSize is even
+	    		if(lstUser.size()% 2 != 0){
+	    			BeerBean beer = new BeerBean();
+	    			beer.setBeer("---");
+	    			beer.setType("---");
+	    			beer.setNationality("---");
+	    			beer.setShort_Description("---");
+	    			beer.setGrade("---");
+	    			beer.setNote("---");
+	    			lstUser.add(beer);
+	    		} 
+	    		
+	    	}
 	    }
 		} catch (Exception e) {
 			e.printStackTrace();
