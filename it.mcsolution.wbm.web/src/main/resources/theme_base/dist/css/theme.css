@@ -1,13 +1,14 @@
 @CHARSET "ISO-8859-1";
 @font-face {
   font-family: 'SketchSerif';
-  src: url('../fonts/SketchSerif.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/SketchSerif.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/SketchSerif.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/SketchSerif.woff') format('woff'), /* Pretty Modern Browsers */
-       url('../fonts/SketchSerif.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/SketchSerif.svg#svgFontName') format('svg'); /* Legacy iOS */
+  src: url('../../fonts/SketchSerif.eot'); /* IE9 Compat Modes */
+  src: url('../../fonts/SketchSerif.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../fonts/SketchSerif.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../fonts/SketchSerif.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../../fonts/SketchSerif.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../../fonts/SketchSerif.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
+
 .itemContainer {
 }
 	.itemContainer > .row > .panel {
@@ -30,14 +31,14 @@
 				.itemContainer .singleItem > .panel {
 					margin: 0;
 					border: none;
-					padding: 0 10px;
+					padding: 0;
 					background: none transparent;
 					box-shadow: none;
 				}
 					.itemContainer .singleItem > .panel .panel-heading {
 						background: none transparent;
 						border: none;
-						padding: 0 15px;
+						/* padding: 10px; */
 					}
 						.itemContainer .singleItem > .panel .panel-heading .row {
 							font-family: 'SketchSerif';
@@ -88,4 +89,15 @@
 									line-height: 140%;
 									font-style: normal;
 								}
-		/*orange: #ec7c14*/
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}

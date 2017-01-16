@@ -19,8 +19,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd">
 
 		<context:component-scan base-package="it.mcsolution.wbm" />
- 	
-
+ 	 <aop:aspectj-autoproxy proxy-target-class="false"/>
 		<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="ignoreResourceNotFound" value="false" />
 		<property name="locations">
@@ -29,8 +28,8 @@
 			</list>
 		</property>
 		</bean>
-		
-			<bean id="pgEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" name="pgEntityManagerFactory">
+		<jpa:repositories base-package="it.mcsolution.wbm" repository-impl-postfix="Bean" entity-manager-factory-ref="pgEntityManagerFactory" transaction-manager-ref="PgTransactionManagerJpa"/>
+			<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" name="pgEntityManagerFactory">
 		<property name="packagesToScan" value="it.mcsolution.wbm.entity" />
 		<property name="dataSource" ref="pgHybeBean" />
 		<property name="persistenceUnitName" value="pgEntityManagerFactory" />
@@ -79,8 +78,9 @@
 </bean>
 	
 
-
-	
+    
+   
+   
 	<bean id="configPropConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="ignoreResourceNotFound" value="true" />
 		<property name="ignoreUnresolvablePlaceholders" value="true" />

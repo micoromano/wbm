@@ -5,10 +5,10 @@ angular.module('myApp').factory('MenuService', ['$http', '$q', function($http, $
     var REST_SERVICE_URI = 'http://localhost:8080/wbm/item/';
  
     var factory = {
-        fetchAllUsers: fetchAllUsers,
-        createUser: createUser,
-        updateUser:updateUser,
-        deleteUser:deleteUser
+        fetchAllItem: fetchAllItem,
+        createItem: createItem,
+        updateItem:updateItem,
+        deleteItem:deleteItem
     };
  
     return factory;

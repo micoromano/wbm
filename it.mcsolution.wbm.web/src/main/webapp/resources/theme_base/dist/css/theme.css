@@ -8,10 +8,7 @@
        url('../../fonts/SketchSerif.ttf')  format('truetype'), /* Safari, Android, iOS */
        url('../../fonts/SketchSerif.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
-html {
-overflow-x: hidden;
 
-}
 .itemContainer {
 }
 	.itemContainer > .row > .panel {
@@ -92,4 +89,15 @@ overflow-x: hidden;
 									line-height: 140%;
 									font-style: normal;
 								}
-		/*orange: #ec7c14*/
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}

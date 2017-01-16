@@ -40,7 +40,7 @@ public class OperationController {
 	@Resource(name = "configProperties")
 	private Properties configProperties;
 	@Autowired
-	private WbmMenuBean webMenuBean; 
+	private WbmMenuBean menuDao; 
 	
 	@RequestMapping(value = "/processExcel", method = RequestMethod.POST)
 	public ModelAndView processExcel(Model model, @RequestParam("excelfile") MultipartFile excelfile) {		
@@ -205,13 +205,14 @@ public class OperationController {
 	    	}else{
 	    	
 	    		String menuId  = configProperties.getProperty("menuId");
-	    		List<MenuItemObj> menuItemObjList = webMenuBean.getListMenu(menuId);
+	    		List<MenuItemObj> menuItemObjList = menuDao.getListMenu(menuId);
 	    		
 	    		for(MenuItemObj obj:menuItemObjList){
 	    		BeerBean beer = new BeerBean();
 				// Creates an object representing a single row in excel
 			
-		    		if(obj.getBeer()!=null){
+
+	    		if(obj.getBeer()!=null){
 		    			beer.setBeer(obj.getBeer());
 		    		}else{
 		    			beer.setBeer("N/D");	

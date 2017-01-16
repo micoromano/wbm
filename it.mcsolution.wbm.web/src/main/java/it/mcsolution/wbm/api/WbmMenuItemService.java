@@ -12,8 +12,6 @@ public interface WbmMenuItemService {
      
     void saveItem(MenuItemObj MenuItemObj);
      
-    void updateItem(MenuItemObj MenuItemObj);
-     
     void deleteItemById(long id);
  
     List<MenuItemObj> findAllItem(); 
@@ -21,5 +19,7 @@ public interface WbmMenuItemService {
     void deleteAllItem();
      
     public boolean isItemExist(MenuItemObj MenuItemObj);
+    
+    void updateItem(MenuItemObj menuItemObj,MenuItemObj newObj);
      
 }

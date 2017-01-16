@@ -14,6 +14,8 @@
 
 
 <!-- Latest compiled and minified JavaScript -->
+     <!-- jQuery -->
+    <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
  	<link href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
 
@@ -25,8 +27,7 @@
 
     <!-- Custom Fonts -->
     <link href="<c:url value="/resources/vendor/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css">
-       <!-- jQuery -->
-    <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
+  
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
@@ -38,11 +39,15 @@
     <script src="<c:url value="/resources/dist/js/sb-admin-2.js"/>"></script>
 </head>
 <body>
-
+<style>
+::-webkit-scrollbar { 
+    display: none; 
+}
+</style>
 <script type="text/javascript">
 $( document ).ready(function() {
 	
-	 setInterval(function() {
+	  setInterval(function() {
          window.location.reload();
        }, 120000); 
 	 
@@ -56,11 +61,11 @@ $("body").animate({
 	   scrollTop:0
 	}, 60000); 
 });
-    
+     
 
 });
 </script>
-	<div class="container itemContainer" style="width: 100%;height: auto;text-align: center;">
+	<div class="container itemContainer" style="width: 100%;height: auto;text-align: center;background-color:black">
 		<div class="row">
 			<div class="panel panel-default">
 				<div class="panel-body">

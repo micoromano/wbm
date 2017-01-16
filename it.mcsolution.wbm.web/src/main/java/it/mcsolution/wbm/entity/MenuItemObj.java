@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="\"menuItemObj\"")
+@Table(name="menuitemobj")
 @NamedQuery(name="MenuItemObj.findAll", query="SELECT m FROM MenuItemObj m")
 public class MenuItemObj implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,7 @@ public class MenuItemObj implements Serializable {
 	@Id
 	private Integer id;
 
-	@Column(name="\"localInfo\"")
+	@Column(name="\"localinfo\"")
 	private String localInfo;
 
 	private String nationality;

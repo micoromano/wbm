@@ -4,13 +4,17 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.mcsolution.wbm.entity.MenuItemObj;
 import it.mcsolution.wbm.entity.User;
 
+@Component
 public interface MenuItemObjDao extends CrudRepository<MenuItemObj, Long>, JpaSpecificationExecutor<MenuItemObj> {
 
-	   
+
 	 @Query("Select mobj from MenuItemObj mobj where mobj.id = :Id")
-	   public MenuItemObj getMenu (@Param("Id") String Id);
+	   public MenuItemObj getMenu (@Param("Id") Integer Id);
 }

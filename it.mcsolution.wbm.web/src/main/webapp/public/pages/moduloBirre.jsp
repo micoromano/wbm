@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>  
-    <title>AngularJS $http Example</title>  
+    <title>Modulo Inserimento Birre</title>  
     <style>
       .username.ng-valid {
           background-color: lightgreen;
@@ -26,10 +26,15 @@
       }
  
     </style>
+    <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+      <script src="<c:url value="/resources/js/app.js"/>"></script> 
+      <script src="<c:url value="/resources/js/menu_service.js"/>"></script> 
+      <script src="<c:url value="/resources/js/menu_controller.js"/>"></script>
      <link href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
   </head>
   <body ng-app="myApp" class="ng-cloak">
-      <div class="generic-container" ng-controller="UserController as ctrl">
+      <div class="generic-container" ng-controller="MenuController as ctrl">
           <div class="panel panel-default">
               <div class="panel-heading"><span class="lead">User Registration Form </span></div>
               <div class="formcontainer">
@@ -133,9 +138,6 @@
               </div>
           </div>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-      <script src="<c:url value="/resources/js/app.js"/>"></script> 
-      <script src="<c:url value="/resources/js/menu_service.js"/>"></script> 
-      <script src="<c:url value="/resources/js/menu_controller.js"/>"></script>
+     
   </body>
 </html>

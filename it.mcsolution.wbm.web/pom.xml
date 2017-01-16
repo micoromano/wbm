@@ -26,6 +26,7 @@
 		<hibernate-jpa-2.0-api.version>1.0.0.Final</hibernate-jpa-2.0-api.version>
 		<hibernate.version>5.0.0.Final</hibernate.version>
 		<postgresql.version>9.1-901.jdbc4</postgresql.version>
+		 <jackson.version>2.7.5</jackson.version>
 	  </properties>
   
   <dependencies>
@@ -116,10 +117,10 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>${hibernate-jpa-2.0-api.version}</version>
-		</dependency>
+    		<groupId>org.hibernate.javax.persistence</groupId>
+    		<artifactId>hibernate-jpa-2.1-api</artifactId>
+    		<version>1.0.0.Final</version>
+ 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -140,7 +141,11 @@
 			<artifactId>postgresql</artifactId>
 			<version>${postgresql.version}</version>
 		</dependency>
-		
+		  <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 	<!-- test scoped dependencies -->
       <dependency>
       <groupId>org.springframework</groupId>

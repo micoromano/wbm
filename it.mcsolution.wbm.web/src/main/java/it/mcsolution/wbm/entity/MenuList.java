@@ -9,17 +9,17 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="\"menuList\"")
+@Table(name="menulist")
 @NamedQuery(name="MenuList.findAll", query="SELECT m FROM MenuList m")
 public class MenuList implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private Integer id;
 
-	@Column(name="\"itemListId\"")
+	@Column(name="itemlistid")
 	private Integer itemListId;
 
-	@Column(name="\"menuId\"")
+	@Column(name="menuid")
 	private Integer menuId;
 
 	private Integer priority;

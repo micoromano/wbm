@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import it.mcsolution.wbm.dao.UserDao;
+import it.mcsolution.wbm.spi.WbmMenuBean;
 
 @Controller
 @RequestMapping("/login")
@@ -22,7 +23,7 @@ public class LoginController {
 @Resource(name = "configProperties")
 private Properties configProperties;
 @Autowired
-private UserDao userData; 
+private WbmMenuBean menuDao; 
 	
 	@RequestMapping(value="/doLogin", method=RequestMethod.POST)
 	public ModelAndView doLogin(@RequestParam("u") String user,@RequestParam("p") String password )
@@ -68,7 +69,7 @@ private UserDao userData;
 	
 	public boolean checkUsr(String user,String password){
 		
-		if(userData.getUser(user, password)!=null){
+		if(menuDao.getUser(user, password)!=null){
 		return true;
 		}else{
 		return false;	
